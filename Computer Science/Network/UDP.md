@@ -1,6 +1,8 @@
-### 2019.08.26.(월) [BYM] UDP란? 
+#### Connectionless vs Connection-orineted
 
----
+Connectionless ~ 편지
+
+Connection-oriented ~ 전화
 
 #### 들어가기 전
 
@@ -94,7 +96,7 @@ DNS는 UDP를 53번 port에서 사용함.
 
 Zone transfer 을 사용해야하는 경우에는 TCP를 사용해야 함.
 
-(Zone Transfer : DNS 서버 간의 요청을 주고 받을 떄 사용하는 transfer)
+(Zone Transfer : DNS 서버 간의 요청을 주고 받을 때 사용하는 transfer)
 
 만약에 데이터가 512 bytes를 넘거나, 응답을 못받은 경우 TCP로 함.
 
