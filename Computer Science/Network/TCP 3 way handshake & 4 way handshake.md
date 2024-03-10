@@ -1,6 +1,20 @@
 ## [TCP] 3 way handshake & 4 way handshake
 
-> 연결을 성립하고 해제하는 과정을 말한다
+> 연결을 성립하고 해제하는 과정을 말한다 (establish/finish connection)
+
+
+handshake 하는 이유 / why not 2 way handshake?
+
+TCP에서 reliable data transfer를 위해 패킷마다 번호를 붙임 (sequence number). 이를 통해 어떤 packet이 lost되었는지, 또는 duplicate되었는지 알 수 있음.
+
+최초의 sequence number (ISN, Initial Sequence Number)는 랜덤으로 정하기 때문에, 상대방에게 이를 알려 줘야 함. 랜덤으로 정하는 이유는.. 보안상 그렇다고 한다.
+
+3 way handshake = 2 way를 양쪽 모두 한 번씩 하는 것. (TCP는 양방향 통신이므로 양쪽이 송수신을 하려면 둘 다 해야 함.)
+
+SYN X = 내 ISN을 상대방과 Synchronize.
+ACK X+1 = SYN을 받았으며, 다음 byte인 X+1을 받을 준비가 되었음.
+
+https://networkengineering.stackexchange.com/questions/24068/why-do-we-need-a-3-way-handshake-why-not-just-2-way
 
 <br>
 
