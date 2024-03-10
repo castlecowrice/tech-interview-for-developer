@@ -25,6 +25,8 @@ Blocking과 Synchronous, 그리고 Non-blocking과 Asysnchronous를
 
 블럭/논블럭은 간단히 말해서 `호출된 함수`가 `호출한 함수`에게 제어권을 건네주는 유무의 차이라고 볼 수 있다.
 
+parallel 실행
+
 함수 A, B가 있고, A 안에서 B를 호출했다고 가정해보자. 이때 호출한 함수는 A고, 호출된 함수는 B가 된다. 현재 B가 호출되면서 B는 자신의 일을 진행해야 한다. (제어권이 B에게 주어진 상황)
 
 - **Blocking** : 함수 B는 내 할 일을 다 마칠 때까지 제어권을 가지고 있는다. A는 B가 다 마칠 때까지 기다려야 한다.
@@ -36,7 +38,7 @@ Blocking과 Synchronous, 그리고 Non-blocking과 Asysnchronous를
 
 ## Synchronous/Asynchronous
 
-동기/비동기는 일을 수행 중인 `동시성`에 주목하자
+동기/비동기는 일을 수행 중인 `순서`에 주목하자
 
 아까처럼 함수 A와 B라고 똑같이 생각했을 때, B의 수행 결과나 종료 상태를 A가 신경쓰고 있는 유무의 차이라고 생각하면 된다.
 
@@ -100,6 +102,8 @@ Blocking과 Synchronous, 그리고 Non-blocking과 Asysnchronous를
 사장님 : 아직이요ㅠㅠ
 ```
 
+non-blocking이므로 다른 일을 할 수 있지만, 결국 치킨이 나와야 -> 집에 가서 먹는 일을 할 수 있다. 두 일의 순서가 있으므로 synchronous.
+
 <br>
 
 ### 4) Non-blocking & Asynchronous
@@ -114,6 +118,8 @@ Blocking과 Synchronous, 그리고 Non-blocking과 Asysnchronous를
 사장님 : 치킨 나왔습니다
 나 : 잘먹겠습니다~
 ```
+
+여기서 asynchronous는 '다른 일'과 '치킨 튀기는 일' 2가지의 관계인 듯.
 
 <br>
 
