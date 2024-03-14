@@ -144,6 +144,20 @@ think();
 
 #### **뮤텍스 알고리즘**
 
+mutual exclusion 구현
+
+i. lock, semaphore
+
+atomic operation, hardware support (compare-and-swap, test-and-set)
+
+2개 이상 프로세스, 스레드
+
+ii. Peterson's solution
+
+software-based solution
+
+2개 프로세스, 스레드
+
 1. ##### 데커(Dekker) 알고리즘
 
    flag와 turn 변수를 통해 임계 구역에 들어갈 프로세스/스레드를 결정하는 방식
