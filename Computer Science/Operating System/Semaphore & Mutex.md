@@ -6,7 +6,7 @@
 
 이를 위해 나온 것이 바로 **'세마포어'**
 
-**세마포어** : 멀티프로그래밍 환경에서 공유 자원에 대한 접근을 제한하는 방법
+**세마포어** : 정수 값.
 
 <br>
 
@@ -15,6 +15,14 @@
 > 여러 프로세스가 데이터를 공유하며 수행될 때, **각 프로세스에서 공유 데이터를 접근하는 프로그램 코드 부분**
 
 공유 데이터를 여러 프로세스가 동시에 접근할 때 잘못된 결과를 만들 수 있기 때문에, 한 프로세스가 임계 구역을 수행할 때는 다른 프로세스가 접근하지 못하도록 해야 한다.
+
+Why?
+
+ex.
+
+메모리 -> 레지스터
+increment
+레지스터 -> 메모리
 
 <br>
 
@@ -51,33 +59,86 @@ procedure V(S) --> 현재상태는 S가 0임
 end V
 ```
 
-이를 통해, 한 프로세스가 P 혹은 V를 수행하고 있는 동안 프로세스가 인터럽트 당하지 않게 된다. P와 V를 사용하여 임계 구역에 대한 상호배제 구현이 가능하게 되었다.
-
-***예시***
-
-> 최초 S 값은 1이고, 현재 해당 구역을 수행할 프로세스 A, B가 있다고 가정하자
-
-1. 먼저 도착한 A가 P(S)를 실행하여 S를 0으로 만들고 임계구역에 들어감
-2. 그 뒤에 도착한 B가 P(S)를 실행하지만 S가 0이므로 대기 상태
-3. A가 임계구역 수행을 마치고 V(S)를 실행하면 S는 다시 1이 됨
-4. B는 이제 P(S)에서 while문을 빠져나올 수 있고, 임계구역으로 들어가 수행함
-
-<br>
+이를 통해, 한 프로세스가 P 혹은 V를 수행하고 있는 동안 프로세스가 인터럽트 당하지 않게 된다(?). P와 V를 사용하여 임계 구역에 대한 상호배제 구현이 가능하게 되었다.
 
 <br>
 
 **뮤텍스** : 임계 구역을 가진 스레드들의 실행시간이 서로 겹치지 않고 각각 단독으로 실행되게 하는 기술
 
-> 상호 배제(**Mut**ual **Ex**clusion)의 약자임
+> 상호 배제(**Mut**ual **Ex**clusion)의 약자
 
 해당 접근을 조율하기 위해 lock과 unlock을 사용한다.
 
-- lock : 현재 임계 구역에 들어갈 권한을 얻어옴 ( 만약 다른 프로세스/스레드가 임계 구역 수행 중이면 종료할 때까지 대기 )
-- unlock : 현재 임계 구역을 모두 사용했음을 알림. ( 대기 중인 다른 프로세스/스레드가 임계 구역에 진입할 수 있음 )
+- acquire lock : 현재 임계 구역에 들어갈 권한을 얻어옴. ( 만약 다른 프로세스/스레드가 임계 구역 수행 중이면 종료할 때까지 대기 )
+- release lock : 현재 임계 구역을 모두 사용했음을 알림. ( 대기 중인 다른 프로세스/스레드가 임계 구역에 진입할 수 있음 )
 
 <br>
 
 뮤텍스는 상태가 0, 1로 **이진 세마포어**로 부르기도 함
+
+but
+
+binary semaphore -> mutex (o)
+
+mutex -> binary semaphore (x)
+
+Q. mutex vs semaphore
+
+- mutex : 소유권 개념이 있음. lock을 acquire한 thread만이 그 lock을 release할 수 있음.
+- semaphore : 소유권 개념 없음. 한 thread가 down(P)한 semaphore를 다른 thread가 up(V)할 수 있음.
+
+Q. semaphore 사용 예
+
+1. producer-consumer problem
+
+buffer에 producer는 data insert, consumer는 data pop.
+
+empty = buffer에서 비어 있는 칸의 수.
+
+full = buffer에서 채워져 있는 칸의 수.
+
+Producer
+```
+P(empty);
+P(mutex);
+...
+V(mutex);
+V(full);
+```
+
+Consumer
+```
+P(full);
+P(mutex);
+...
+V(mutex);
+V(empty);
+```
+
+2. reader-writer problem
+
+
+
+3. dining philosopher problem
+
+철학자 다섯 명이 원탁에 앉아 있다. 
+철학자는 자신의 왼쪽과 오른쪽에 있는 젓가락을 들고 밥을 먹고, 다 먹고 나면 젓가락을 내려놓고 생각을 한다.
+
+```
+semaphore chopstick[5];
+
+P(chopstick[i]);
+P(chopstick[(i+1)%5]);
+eat();
+V(chopstick[i]);
+V(chopstick[(i+1)%5]);
+think();
+```
+
+-> deadlock 발생 가능.
+
+
+
 
 <br>
 
@@ -128,6 +189,13 @@ end V
    ```
 
    <br>
+
+mutual exclusion : 한 번에 하나의 프로세스만 Critical section에 들어갈 수 있다.
+
+progress : Critical section에서 실행되고 있는 프로세스가 없는 상황에서, 어떤 프로세스가 그 Critical section에 들어가고 싶어 한다면, 들어갈 수 있어야 한다.
+
+bounded wait (no starvation) : Critical Section으로 들어가고자 하는 프로세스는 언젠가는 (eventually) 해당 Critical section에 들어갈 수 있어야 한다.
+
 
 3. ##### 제과점(Bakery) 알고리즘
 
