@@ -27,6 +27,13 @@
 
 ✓ **입출력 또는 이벤트 완료 (I/O or Event Completion)** : 입출력/이벤트가 끝난 프로세스를 준비 상태로 전환하여 스케줄러에 의해 선택될 수 있도록 만드는 것.
 
+ex.
+
+1. [user mode] t1 running -> read system call -> [kernel mode] save t1 state, t1 waiting, restore t2
+2. [user mode] t2 running -> I/O completion (interrupt) -> [kernel mode] save t2 state, t1 ready, restore t2
+3. [user mode] t2 running -> timer interrupt -> [kernel mode] save t2 state, t2 ready, restore t1
+4. [user mode] t1 running -> ...
+
 ### CPU 스케줄링의 종류
 
 - 비선점 스케줄링
