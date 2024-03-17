@@ -2,13 +2,9 @@
 
 ##### 정의
 
-프로그램을 실행하는 도중에 특정 event가 발생하여 실행 흐름이 kernel로 넘어가는 상
+프로그램을 실행하는 도중에 특정 event가 발생하여 실행 흐름이 kernel로 넘어가는 상황
 
 <br>
-
-외부/내부 인터럽트는 `CPU의 하드웨어 신호에 의해 발생`
-
-소프트웨어 인터럽트는 `명령어의 수행에 의해 발생`
 
 - ##### Asynchronous(Hardware) Exception = Interrupt
 
