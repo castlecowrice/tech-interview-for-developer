@@ -22,13 +22,7 @@
 
    <br>
 
-   `여러 Client 가 접속하는 서버를 Blocking 방식으로 구현하는 경우` -> I/O 작업을 진행하는 작업을 중지 -> 다른 Client가 진행중인 작업을 중지하면 안되므로, client 별로 별도의 Thread를 생성해야 함 -> 접속자 수가 매우 많아짐
-
-   이로 인해, 많아진 Threads 로 *컨텍스트 스위칭 횟수가 증가함,,, 비효율적인 동작 방식*
-
-   <br>
-
-2. #### Non-Blocking I/O
+2. #### Synchronous Non-Blocking I/O
 
    I/O 작업이 진행되는 동안 User Process의 작업을 중단하지 않음. 
 
@@ -46,6 +40,9 @@
 
      5. recvfrom 함수는 빠른 속도로 data를 복사한 후, 복사한 data의 길이와 함께 반환함.
 
+3. #### Asynchronous Non-Blocking I/O
+
+  
 
 
 
