@@ -1,11 +1,8 @@
-## 인터럽트(Interrupt)
+## Exception
 
 ##### 정의
 
-프로그램을 실행하는 도중에 예기치 않은 상황이 발생할 경우 현재 실행 중인 작업을 즉시 중단하고, 발생된 상황에 대한 우선 처리가 필요함을 CPU에게 알리는 것
-<br>
-
-지금 수행 중인 일보다 더 중요한 일(ex. 입출력, 우선 순위 연산 등)이 발생하면 그 일을 먼저 처리하고 나서 하던 일을 계속해야한다.
+프로그램을 실행하는 도중에 특정 event가 발생하여 실행 흐름이 kernel로 넘어가는 상
 
 <br>
 
@@ -13,27 +10,23 @@
 
 소프트웨어 인터럽트는 `명령어의 수행에 의해 발생`
 
-- ##### 외부 인터럽트
+- ##### Asynchronous(Hardware) Exception = Interrupt
 
-  입출력 장치, 타이밍 장치, 전원 등 외부적인 요인으로 발생
-
-  `전원 이상, 기계 착오, 외부 신호, 입출력`
+  - Timer Interrupt
+  - I/O Interrupt (data from network, disk, ...)
 
   <br>
 
-- ##### 내부 인터럽트
+- ##### Synchronous Exception
 
-  Trap이라고 부르며, 잘못된 명령이나 데이터를 사용할 때 발생
+Caused by events that occur as a result of executing an instruction.
 
-  > 0으로 나누기가 발생, 오버플로우, 명령어를 잘못 사용한 경우 (Exception)
-
-- ##### 소프트웨어 인터럽트
-
-  프로그램 처리 중 명령의 요청에 의해 발생한 것 (SVC 인터럽트)
-
-  > 사용자가 프로그램을 실행시킬 때 발생
-  >
-  > 소프트웨어 이용 중에 다른 프로세스를 실행시키면 시분할 처리를 위해 자원 할당 동작이 수행된다.
+- Trap
+  - system call, ...
+- Fault
+  - page fault, ...
+- Abort
+  - illegal instruction, ...
 
 <br>
 
