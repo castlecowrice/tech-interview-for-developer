@@ -6,23 +6,20 @@
 
 <br>
 
-- ##### Asynchronous(Hardware) Exception = Interrupt
+##### Asynchronous(Hardware) Exception = Interrupt
 
   - Timer Interrupt
   - I/O Interrupt (data from network, disk, ...)
 
   <br>
 
-- ##### Synchronous Exception
+##### Synchronous Exception
 
 Caused by events that occur as a result of executing an instruction.
 
-- Trap
-  - system call, ...
-- Fault
-  - page fault, ...
-- Abort
-  - illegal instruction, ...
+  - Trap (system call, ...)
+  - Fault (page fault, ...)
+  - Abort (illegal instruction, ...)
 
 <br>
 
