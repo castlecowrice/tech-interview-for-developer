@@ -3,23 +3,14 @@
 <br>
 
 ```
-데이터의 중복을 줄이고, 무결성을 향상시킬 수 있는 정규화에 대해 알아보자
+데이터의 중복과 이상 현상(anomaly)를 줄이기 위해 relation을 분해(decompose)하는 과정
+
+decomposition
+
+1. lossless join
+
+2. preserve functional dependency
 ```
-
-<br>
-
-### Normalization
-
-가장 큰 목표는 테이블 간 **중복된 데이터를 허용하지 않는 것**이다.
-
-중복된 데이터를 만들지 않으면, 무결성을 유지할 수 있고, DB 저장 용량 또한 효율적으로 관리할 수 있다.
-
-<br>
-
-### 목적
-
-- 데이터의 중복을 없애면서 불필요한 데이터를 최소화시킨다.
-- 무결성을 지키고, 이상 현상을 방지한다.
 
 <br>
 
@@ -35,11 +26,7 @@ a uniquely determines b
 
 a = determinant, b = dependent
 
-### BCNF
-
-nontrivial fd a -> b에 대하여, a가 superkey
-
-### 제 1정규화(1NF)
+### 제 1정규화(1NF, first normal form)
 
 테이블 컬럼이 원자값(하나의 값, atomic value)을 갖도록 테이블을 분리시키는 것을 말한다.
 
@@ -59,9 +46,9 @@ nontrivial fd a -> b에 대하여, a가 superkey
 
 <br>
 
-### 제 2정규화(2NF)
+### 제 2정규화(2NF, second normal form)
 
-테이블의 모든 컬럼이 완전 함수적 종속을 만족해야 한다.
+완전 함수적 종속을 만족해야 한다.
 
 조금 쉽게 말하면, 테이블에서 기본키가 복합키(키1, 키2)로 묶여있을 때, 두 키 중 하나의 키만으로 다른 컬럼을 결정지을 수 있으면 안된다.
 
@@ -93,7 +80,7 @@ every non-prime attribute (not contained in the candidate key) is not partially 
 
 <br>
 
-### 제 3정규화(3NF)
+### 제 3정규화(3NF, third normal form)
 
 2NF가 진행된 테이블에서 이행적 종속을 없애기 위해 테이블을 분리하는 것이다.
 
@@ -124,7 +111,9 @@ every non-prime attribute (not contained in the candidate key) is not partially 
 
 <br>
 
-<br>
+### BCNF
+
+nontrivial fd a -> b에 대하여, a가 superkey
 
 #### [참고 사항]
 
