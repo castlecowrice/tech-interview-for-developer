@@ -1,21 +1,66 @@
-# DNS (Domain Name System)
+### DNS (Domain Name System)
 
 모든 통신은 IP를 기반으로 연결된다. 하지만 사용자에게 일일히 IP 주소를 입력하기란 UX적으로 좋지 않다
 
 때문에 DNS 가 등장 했으며 DNS 는 IP 주소와 도메인 주소를 매핑하는 역할을 수행한다
 
-## 도메인 주소가 IP로 변환되는 과정
+### 도메인 주소가 IP로 변환되는 과정
 
 1. 디바이스는 hosts 파일을 열어 봅니다
    - hosts 파일에는 로컬에서 직접 설정한 호스트 이름과 IP 주소를 매핑 하고 있습니다
 2. DNS는 캐시를 확인 합니다
    - 기존에 접속했던 사이트의 경우 캐시에 남아 있을 수 있습니다
    - DNS는 브라우저 캐시, 로컬 캐시(OS 캐시), 라우터 캐시, ISP(Internet Service Provider)캐시 순으로 확인 합니다
-3. DNS는 Root DNS에 요청을 보냅니다
+3. DNS (ISP의 DNS 서버)는 Root DNS에 요청을 보냅니다
    - Root DNS의 주소는 잘 알려져 있음.
-   - Root DNS는 도메인 주소의 최상위 계층을 확인하여 TLD(Top Level domain, .com/.kr/...) Name Server의 주소를 반환 합니다
+   - Root DNS는 도메인 주소의 최상위 계층을 확인하여 TLD(Top Level domain, .com) Name Server의 주소를 반환 합니다
 4. DNS는 TLD NS에 요청을 보냅니다
-   - TLD NS는 Authoritative(권한 있는) NS의 주소를 반환 합니다
+   - TLD NS는 Authoritative(권한 있는, google.com) NS의 주소를 반환 합니다
 5. DNS는 Authoritative NS에 요청을 보냅니다
    - 도메인 이름에 대한 IP 주소를 반환 합니다
 
+### www.google.com 에 접속할 때 일어나는 일
+
+www.google.com을 브라우저 주소창에 친다.
+
+브라우저는 DNS Lookup을 통해 www.google.com의 IP주소를 알아낸다.
+
+브라우저는 HTTP (GET) Request Message를 만들고 OS에 해당 IP로 전송 요청을 한다.
+
+---
+
+- 프로토콜 스택(운영체제에 내장된 네트워크 제어용 소프트웨어)이 브라우저로부터 메시지를 받아 패킷에 저장한다.
+
+   L3 Header : IP 주소 (end-to-end)
+
+   L2 Header : MAC 주소 (next-hop)
+
+- 프레임을 LAN Adapter에 넘긴다.
+
+- LAN 어댑터는 프레을 전기신호로 변환시키고, LAN 케이블에 송출한다.
+
+   host -> switch -> router -> ISP -> Internet -> ...
+
+   (https://youtu.be/rYodcvhh7b8)
+
+---
+
+서버와 TCP 연결을 수립한다. (3 way handshaking)
+
+TCP 연결이 완료되면 브라우저가 웹 서버에 HTTP GET 요청을 보낸다.
+
+서버가 요청을 처리하고 response를 생성한다.
+
+---
+
+- 패킷이 웹 서버에 도착하면 웹 서버의 프로토콜 스택은 패킷을 추출하여 메시지를 복원하고 웹 서버 애플리케이션에 넘긴다.
+
+- 메시지를 받은 웹 서버 애플리케이션은 요청 메시지에 따른 데이터를 응답 메시지에 넣어 클라이언트로 전송한다.
+
+- 응답 메시지가 클라이언트에게 전달된다.
+
+---
+
+서버가 HTTP response를 보낸다.
+
+브라우저가 HTML content를 보여준다.
