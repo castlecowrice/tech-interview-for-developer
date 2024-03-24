@@ -195,6 +195,8 @@
 
 SOLID라고 부르는 5가지 설계 원칙이 존재한다.
 
+https://inpa.tistory.com/category/%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%8C%A8%ED%84%B4/OOP
+
 1. ##### SRP(Single Responsibility) - 단일 책임 원칙
 
    클래스는 단 한 개의 책임을 가져야 한다.
