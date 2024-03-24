@@ -106,6 +106,12 @@ a = determinant, b = dependent
 
 3NF를 만족하면서, 모든 결정자가 후보키 집합에 속해야 한다.
 
+### 반정규화
+
+정규화로 인해 테이블이 분해되어, 조회를 할 때 relation 간 join을 해야 한다. -> 성능이 저하될 수 있다.
+
+삽입/수정/삭제보다 조회가 많이 이루어질 때 사용하면 좋다.
+
 #### [참고 사항]
 
 - [링크](https://wkdtjsgur100.github.io/database-normalization/)
