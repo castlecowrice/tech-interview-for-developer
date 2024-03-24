@@ -22,7 +22,7 @@ decomposition
 
 a -> b
 
-a uniquely determines b
+a uniquely determines b (a가 b를 유일하게 결정한다. b는 a에 종속된다.)
 
 a = determinant, b = dependent
 
@@ -48,13 +48,9 @@ a = determinant, b = dependent
 
 ### 제 2정규화(2NF, second normal form)
 
-완전 함수적 종속을 만족해야 한다.
+1NF를 만족하면서, 기본키에 속하지 않은 attribute가 기본키에 대해 완전 함수적 종속을 만족해야 한다.
 
-조금 쉽게 말하면, 테이블에서 기본키가 복합키(키1, 키2)로 묶여있을 때, 두 키 중 하나의 키만으로 다른 컬럼을 결정지을 수 있으면 안된다.
-
-> 기본키의 부분집합 키가 결정자가 되어선 안된다는 것
-
-every non-prime attribute (not contained in the candidate key) is not partially dependent on any key.
+= 테이블에서 기본키의 부분집합만으로 다른 컬럼을 결정지을 수 있으면 안된다.
 
 <br>
 
@@ -82,14 +78,9 @@ every non-prime attribute (not contained in the candidate key) is not partially 
 
 ### 제 3정규화(3NF, third normal form)
 
-2NF가 진행된 테이블에서 이행적 종속을 없애기 위해 테이블을 분리하는 것이다.
+2NF를 만족하면서, 기본키가 아닌 속성들이 기본키에 이행적 종속되지 않아야 한다.
 
-> 이행적 종속 : A → B, B → C면 A → C가 성립된다
-
-아래 두가지 조건을 만족시켜야 한다.
-
-- 릴레이션이 2NF에 만족한다.
-- 기본키가 아닌 속성들은 기본키에 의존한다.
+= 기본키가 아닌 속성들은 기본키에 종속되며, 기본키가 아닌 속성에 종속되지 않는다.
 
 <br>
 
@@ -113,7 +104,7 @@ every non-prime attribute (not contained in the candidate key) is not partially 
 
 ### BCNF
 
-nontrivial fd a -> b에 대하여, a가 superkey
+3NF를 만족하면서, 모든 결정자가 후보키 집합에 속해야 한다.
 
 #### [참고 사항]
 
