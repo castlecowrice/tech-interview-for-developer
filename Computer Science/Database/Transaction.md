@@ -70,8 +70,6 @@
 
 ### 트랜잭션의 상태
 
-![transaction-status](https://github.com/castlecowrice/tech-interview-for-developer/assets/48044251/3431a22e-a608-4b80-a2d4-098c96305af9)
-
 #### Active
 
 트랜잭션이 실행중인 상태이다.
