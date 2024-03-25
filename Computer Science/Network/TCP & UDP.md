@@ -4,6 +4,8 @@ Connectionless ~ 편지
 
 Connection-oriented ~ 전화
 
+<br>
+
 #### TCP & UDP
 
 Transport layer에서 사용하는 프로토콜
@@ -16,7 +18,7 @@ Transport layer에서 사용하는 프로토콜
   - HTTP/HTTPS, 이메일, 파일
     
   - 전이중(full-duplex) : 동시에 양방향 전송 가능.
-  - 점대점(point to point) : 연결은 2개의 종단점(소켓)을 가지고 있음.
+  - 점대점(point to point) : 연결은 2개의 종단점(소켓)을 가지고 있다.
 
 - UDP (User Datagram Protocol)
 
@@ -36,16 +38,16 @@ Transport layer에서 사용하는 프로토콜
 
   2. IP에서 오류가 발생하면 ICMP에서 알려준다. 하지만 ICMP는 오류 대처를 못 하기 때문에 IP보다 위에서 처리를 해줘야 한다.
 
-  * *ICMP : 인터넷 제어 메시지 프로토콜로 오류 메시지를 전송하는데 주로 쓰인다..
+  - ICMP : 인터넷 제어 메시지 프로토콜로 오류 메시지를 전송하는데 주로 쓰인다..
 
-  - 1번을 해결하기 위하여 포트 번호가 나오게 됐고, 2번을 해결하기 위해 상위 프로토콜인 TCP와 UDP가 나오게 되었다.
+  - 1번을 해결하기 위하여 포트 번호가 나왔고, 2번을 해결하기 위해 상위 프로토콜인 TCP와 UDP가 나왔다.
 
 - DNS(Domain Name System)에서 UDP를 사용하는 이유
 
   - DNS Request는 크기가 작다. -> UDP Segment에 담길 수 있다.
   - Application Layer에서 timeout시 resend를 통해 신뢰성을 더할 수 있다.
 
-  - 참고: 데이터가 512 bytes를 넘는 경우 경우 TCP를 사용한다.
+  - 참고: 데이터가 512 bytes를 넘는 경우 TCP를 사용한다.
 
 <br>
 
@@ -55,8 +57,8 @@ Transport layer에서 사용하는 프로토콜
   - Source port : 시작 포트
   - Destination port : 도착지 포트
   - Length : 길이
-  - _Checksum_ : 오류 검출
-    - 중복 검사의 한 형태로, 오류 정정을 통해 공간이나 시간 속에서 송신된 자료의 무결성을 보호하는 단순한 방법이다.
+  - _Checksum_ : 무결성 검사
+    - Datagram을 16비트 단위로 나누고 다 더한다. -> 1의 보수
 
 <br>
 
