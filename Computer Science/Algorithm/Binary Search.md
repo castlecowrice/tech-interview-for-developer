@@ -1,29 +1,6 @@
 ## 이분 탐색(Binary Search)
 
-> 탐색 범위를 두 부분으로 분할하면서 찾는 방식
-
-처음부터 끝까지 돌면서 탐색하는 것보다 훨~~~씬 빠른 장점을 지님
-
-```
-* 시간복잡도
-전체 탐색 : O(N)
-이분 탐색 : O(logN)
-```
-
-<br>
-
-#### 진행 순서
-
-- 우선 정렬을 해야 함
-- left와 right로 mid 값 설정
-- mid와 내가 구하고자 하는 값과 비교
-- 구할 값이 mid보다 높으면 : left = mid+1
-  구할 값이 mid보다 낮으면 : right = mid - 1
-- left > right가 될 때까지 계속 반복하기
-
-<br>
-
-#### Code
+#### 중복 x
 
 ```java
 public static int solution(int[] arr, int M) { // arr 배열에서 M을 찾자
@@ -48,3 +25,37 @@ public static int solution(int[] arr, int M) { // arr 배열에서 M을 찾자
 }
 ```
 
+#### 중복 o (lower bound)
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
+    int n; cin >> n;
+    vector<int> A(n);
+    for(int i = 0; i < n; i++) {
+        cin >> A[i];
+    }
+    sort(A.begin(), A.end());
+
+    int m; cin >> m;
+    while(m--) {
+        int x; cin >> x;
+        int lo = -1, hi = n-1;
+        while(hi-lo > 1) {
+            int k = (lo+hi)/2;
+            if(A[k] < x) {
+                lo = k;
+            }
+            else {
+                hi = k;
+            }
+        }
+        cout << (A[hi] == x) << '\n';
+    }
+}
+```
