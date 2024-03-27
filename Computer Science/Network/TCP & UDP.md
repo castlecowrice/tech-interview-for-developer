@@ -14,7 +14,6 @@ Transport layer에서 사용하는 프로토콜
   
   - 신뢰성 있는 (중복x 손실x 순서o), 연결 지향형 프로토콜.
   - 흐름제어, 혼잡제어 지원.
-  - 연결(connection) 시 3 way handshake, 연결 해제시 4 way handshake 진행.
   - HTTP/HTTPS, 이메일, 파일
     
   - 전이중(full-duplex) : 동시에 양방향 전송 가능.
@@ -23,7 +22,6 @@ Transport layer에서 사용하는 프로토콜
 - UDP (User Datagram Protocol)
 
   - 신뢰성 없는, 비연결형 프로토콜.
-  - 데이터를 데이터그램 단위로 처리.
   - DNS, 실시간 방송, 온라인 게임
 
 - TCP vs UDP
@@ -53,7 +51,8 @@ Transport layer에서 사용하는 프로토콜
 
 #### UDP Header
 
-- <img src='https://t1.daumcdn.net/cfile/tistory/272A5A385759267B36'>
+<img src='https://t1.daumcdn.net/cfile/tistory/272A5A385759267B36'>
+
   - Source port : 시작 포트
   - Destination port : 도착지 포트
   - Length : 길이
