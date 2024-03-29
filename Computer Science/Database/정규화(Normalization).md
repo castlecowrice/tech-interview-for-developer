@@ -22,7 +22,7 @@ decomposition
 
 a -> b
 
-a uniquely determines b (a가 b를 유일하게 결정한다. b는 a에 종속된다.)
+a uniquely determines b (a가 b를 유일하게 결정한다. a를 알면 b도 알 수 있다. b는 a에 종속된다.)
 
 a = determinant, b = dependent
 
