@@ -4,16 +4,6 @@
 >
 > 프로세스가 실행되려면 프로그램이 메모리에 올라와야 함
 
-주소가 할당된 일련의 바이트들로 구성되어 있음
-
-<br>
-
-CPU는 레지스터가 지시하는대로 메모리에 접근하여 다음에 수행할 명령어를 가져옴
-
-명령어 수행 시 메모리에 필요한 데이터가 없으면 해당 데이터를 우선 가져와야 함
-
-이 역할을 하는 것이 바로 **MMU**.
-
 <br>
 
 #### MMU (Memory Management Unit, 메모리 관리 장치)
@@ -28,21 +18,13 @@ CPU는 레지스터가 지시하는대로 메모리에 접근하여 다음에 �
 
 이 가상 주소에서 실제 데이터가 담겨 있는 곳에 접근하기 위해선 빠른 주소 변환이 필요한데, 이를 MMU가 도와주는 것
 
-즉, MMU의 역할은 다음과 같다고 말할 수 있다.
-
-> MMU가 지원되지 않으면, physical address를 직접 접근해야 하기 때문에 부담이 있다.
->
-> MMU는 사용자가 기억장소를 일일이 할당해야 하는 불편을 없애준다.
->
-> 프로세스의 크기가 실제 메모리의 용량을 초과해도 실행될 수 있게 해준다.
-
 <br>
 
 또한 메인 메모리의 직접 접근은 비효율적이므로, CPU와 메인 메모리 속도를 맞추기 위해 캐시가 존재함
 
 <br>
 
-##### Virtual Memory
+#### Virtual Memory
 
 memory의 abstraction
 
@@ -53,7 +35,7 @@ memory의 abstraction
 -> 라이브러리가 여러 프로세스들 사이에 공유될 수 있도록 한다. 프로세스들은 공유 메모리를 통해 통신할 수 있다.
 
 
-##### Demand Paging
+#### Demand Paging
 
 프로그램 실행 시작 시에 프로그램 전체를 디스크에서 물리 메모리에 적재하는 대신, 초기에 필요한 것들만 적재하는 전략.
 
@@ -79,7 +61,7 @@ memory의 abstraction
 
 <br>
 
-##### 오버헤드를 감소시키는 해결법
+#### 오버헤드를 감소시키는 해결법
 
 ##### 방법1
 
@@ -121,17 +103,17 @@ CPU에는 이러한 캐시 메모리가 2~3개 정도 사용된다. (L1, L2, L3 
 
 <br>
 
-##### CPU와 Memory의 상호작용
+#### CPU와 Memory의 상호작용
 
 CPU
 
 - fetch
 
-CPU -> MMU -> Cache <-> Main Memory <-> Disk 
-
-MMU
-
-TLB <-> Translation (Page Table in Physical Memory) (VPN -> PPN)
+   CPU -> MMU -> Cache <-> Main Memory <-> Disk 
+   
+   MMU
+   
+   TLB <-> Translation (Page Table in Physical Memory) (VPN -> PPN)
 
 - decode
 
@@ -139,7 +121,7 @@ TLB <-> Translation (Page Table in Physical Memory) (VPN -> PPN)
 
 - execute
 
-##### 지역성 (locality)
+#### 지역성 (locality)
 
 **시간 지역성 (temporal locality)** : 최근에 참조된 주소의 내용은 곧 다음에도 참조되는 특성
 
