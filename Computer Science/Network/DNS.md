@@ -19,6 +19,20 @@
 5. DNS는 Authoritative NS에 요청을 보냅니다
    - 도메인 이름에 대한 IP 주소를 반환합니다
 
+Q. 로컬 캐시?
+
+Windows의 경우 ipconfig/displaydns로 확인 가능
+
+Q. 라우터 캐시?
+
+로컬 네트워크의 라우터
+
+Q. ISP?
+
+- 인터넷 연결 제공
+
+- 계층적 구조
+
 ### www.google.com 에 접속할 때 일어나는 일
 
 www.google.com 을 브라우저 주소창에 친다.
@@ -54,3 +68,16 @@ TCP 연결이 완료되면 요청이 전송된다.
 > 메시지를 받은 웹 서버 애플리케이션은 요청 메시지에 따라 응답을 생성하고 클라이언트로 전송한다.
 
 브라우저가 HTML content를 보여준다.
+
+Q. next-hop MAC 주소를 알아내는 방법?
+
+host ARP request (dest: FF-FF-FF-FF-FF-FF) -> switch flood -> router -> switch -> host
+
+Q. next-hop IP 주소를 알아내는 방법?
+
+DHCP server (보통 router에 포함되어 있음)
+
+DHCP discover -> DHCP offer (IP주소, 게이트웨이 주소, DNS 서버 주소)
+
+https://choiblack.tistory.com/m/28
+
