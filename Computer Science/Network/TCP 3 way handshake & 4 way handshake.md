@@ -17,6 +17,19 @@ TCP에서 reliable data transfer를 위해 패킷마다 번호를 붙인다 (seq
 
 https://networkengineering.stackexchange.com/questions/24068/why-do-we-need-a-3-way-handshake-why-not-just-2-way
 
+Q. 그러면 한쪽만 송신을 하는 경우에는 2-way handshake로도 충분한가?
+
+문제 시나리오
+
+1. SYN X, 도착
+2. ACK X+1
+3. ACK이 도착하기 전 SYN X 재전송, ACK 도착
+4. 클라이언트 종료
+5. SYN X 도착
+6. ACK X+1 (도착 못 함)
+
+-> 서버만 연결을 수립하는 결과.
+
 <br>
 
 ### 3 way handshake - 연결 성립
