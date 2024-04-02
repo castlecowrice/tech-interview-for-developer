@@ -109,11 +109,17 @@ CPU
 
 - fetch
 
-   CPU -> MMU -> Cache <-> Main Memory <-> Disk 
+   - CPU -> MMU -> Cache <-> Main Memory <-> Disk 
    
-   MMU
+   - MMU
    
-   TLB <-> Translation (Page Table in Physical Memory) (VPN -> PPN)
+      TLB <-> Translation (Page Table in Physical Memory) (VPN -> PPN)
+
+   Q. TLB on context switch?
+
+   i. flush
+  
+   ii. pid를 같이 저장.
 
 - decode
 
@@ -168,5 +174,9 @@ cache memory - main memory mapping하는 여러 가지 방법.
   > 실제로 위 두가지보다 나중에 나온 방식
 
 <br>
+
+Q. Why not a virtually-addressed cache?
+
+Two programs which are sharing data will have two different virtual addresses for the same physical address so have two copies of the shared data in the cache which would lead to coherence issues
 
 <br>
