@@ -4,8 +4,8 @@
 
 ### 선점 / 비선점 스케줄링
 
-- 선점 (preemptive) : OS가 CPU의 사용권을 선점할 수 있는 경우, 강제 회수하는 경우 (처리시간 예측 어려움)
-- 비선점 (nonpreemptive) : 프로세스 종료 or I/O 등의 이벤트가 있을 때까지 실행 보장 (처리시간 예측 용이함)
+- 선점 (preemptive) : OS가 CPU의 사용권을 선점할 수 있다.
+- 비선점 (nonpreemptive) : 프로세스 종료 or I/O 등의 이벤트가 있을 때까지 실행을 보장한다.
 
 ### 프로세스 상태
 
@@ -21,11 +21,11 @@
 
 ✓ **스케줄러 디스패치 (Scheduler Dispatch)** : 준비 상태에 있는 프로세스 중 하나를 선택하여 실행시키는 것.
 
-✓ **인터럽트 (Interrupt)** : timer, i/o, priority... 등이 발생하여 현재 실행 중인 프로세스를 준비 상태로 바꾸고, 해당 작업을 먼저 처리하는 것.
+✓ **인터럽트 (Interrupt)** : timer, i/o complete, priority... 등이 발생하여 현재 실행 중인 프로세스를 준비 상태로 바꾸고, interrupt handler가 실행.
 
-✓ **입출력 또는 이벤트 대기 (I/O or Event wait)** : 실행 중인 프로세스가 syscall, page fault...를 처리해야 하는 경우, 입출력/이벤트가 모두 끝날 때까지 대기 상태로 만드는 것.
+✓ **입출력 또는 이벤트 대기 (I/O or Event wait)** : 실행 중인 프로세스가 r/w syscall, page fault, acquire lock...를 처리해야 하는 경우, 끝날 때까지 대기 상태로 만드는 것.
 
-✓ **입출력 또는 이벤트 완료 (I/O or Event Completion)** : 입출력/이벤트가 끝난 프로세스를 준비 상태로 전환하여 스케줄러에 의해 선택될 수 있도록 만드는 것.
+✓ **입출력 또는 이벤트 완료 (I/O or Event Completion)** : 입출력 등이 끝난 프로세스를 준비 상태로 바꿔 스케줄러에 의해 선택될 수 있도록 만드는 것.
 
 ex.
 
@@ -38,28 +38,27 @@ ex.
 
 - 비선점 스케줄링
     1. FCFS (First Come First Served)
-        - 큐에 도착한 순서대로 CPU 할당
+        - 큐에 도착한 순서대로 실행
         - 실행 시간이 짧은 게 뒤로 가면 평균 대기 시간이 길어짐
     2. SJF (Shortest Job First)
-        - 수행시간(CPU burst time)이 가장 짧다고 판단되는 작업을 먼저 수행
-        - FCFS 보다 평균 대기 시간 감소
-        - starvation 가능성
+        - 실행시간(CPU burst time)이 가장 짧은 프로세스를 먼저 실행
+        - FCFS 보다 평균 대기 시간 감소 / starvation 가능성
 
 - 선점 스케줄링
     1. SRTF (Shortest Remaining Time First)
-        - 현재 수행중인 프로세스의 남은 burst time 보다 더 짧은 새로운 프로세스가 도착하면 preempt.
+        - 현재 실행중인 프로세스의 남은 burst time 보다 더 짧은 새로운 프로세스가 도착하면 preempt.
+        - starvation 가능성
     2. Priority Scheduling
-        - 정적/동적으로 우선순위를 부여하여 우선순위가 높은 순서대로 처리
+        - 정적/동적으로 우선순위를 부여하여 우선순위가 높은 순서대로 실행
         - starvation 가능성 -> Aging 
     3. Round Robin
-        - FCFS에 의해 프로세스들이 보내지면 각 프로세스는 동일한 `Time Quantum(Slice)` 만큼 CPU를 할당 받음
-        - Time Slice가 끝나면 preempt, ready queue의 맨 뒤로 보냄
+        - 기본 FCFS에 더해, 각 프로세스에 동일한 `Time Quantum(Slice)` 할당. Time Slice가 끝나면 preempt, 큐의 맨 뒤로 보냄
         - Time Quantum이 크면 FCFS와 같게 되고, 작으면 잦은 Context Switch로 오버헤드 증가
     4. Multilevel-Queue (다단계 큐)
     
         ![Untitled1](https://user-images.githubusercontent.com/13609011/91695428-16a2f480-eba9-11ea-8d91-17d22bab01e5.png)
-        - 작업들을 여러 종류의 그룹으로 나누어 여러 개의 큐를 이용하는 기법
-        - starvation 가능성 -> queue마다 일정 %의 CPU time을 배정
+        - 작업들을 우선순위에 따라 나누어 여러 개의 큐를 이용하는 기법
+        - starvation 가능성 -> queue마다 일정 %만큼 실행 시간 할당.
   
     5. Multilevel-Feedback-Queue (다단계 피드백 큐)
 
