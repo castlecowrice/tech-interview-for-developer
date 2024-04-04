@@ -225,7 +225,7 @@ public class Stack {
 
 ## 큐(Queue)
 
-입력과 출력을 한 쪽 끝(front, rear)으로 제한
+입력과 출력이 양쪽 끝(front, rear)에서 일어남
 
 ##### FIFO (First In First Out, 선입선출) : 가장 먼저 들어온 것이 가장 먼저 나옴
 
@@ -233,7 +233,7 @@ public class Stack {
 
 ***언제 사용?***
 
-버퍼, 마구 입력된 것을 처리하지 못하고 있는 상황, BFS
+대기열, ready queue, BFS
 
 <br>
 
