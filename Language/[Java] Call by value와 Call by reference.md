@@ -50,13 +50,13 @@ call by reference 호출 방식은 함수 호출 시 인자로 전달되는 변�
 따라서 함수 안에서 인자 값이 변경되면, 아규먼트로 전달된 객체의 값도 변경됨
 
 ```c++
-void func(int *n) {
-    *n = 20;
+void func(int &n) {
+    n = 20;
 }
 
 void main() {
     int n = 10;
-    func(&n);
+    func(n);
     printf("%d", n);
 }
 ```
@@ -68,16 +68,6 @@ void main() {
 <br>
 
 #### Java 함수 호출 방식
-
-<del>자바의 경우, 함수에 전달되는 인자의 데이터 타입에 따라 함수 호출 방식이 달라짐 </del>
-
-- <del>primitive type(원시 자료형) : call by value</del>
-
-  > <del>int, short, long, float, double, char, boolean</del>
-
-- <del>reference type(참조 자료형) : call by reference</del>
-
-  > <del>array, Class instance</del>
   
 자바의 경우, 항상 **call by value**로 값을 넘긴다.
 
