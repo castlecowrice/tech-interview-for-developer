@@ -27,9 +27,9 @@ Caused by events that occur as a result of executing an instruction.
 
 <img src=" https://mblogthumb-phinf.pstatic.net/20160310_124/scw0531_14575366291105WjS7_PNG/ERTRTETRE.png?type=w2 ">
 
-만약 **인터럽트 기능이 없었다면**, 컨트롤러는 특정한 어떤 일을 할 시기를 알기 위해 계속 체크를 해야 한다. (이를 **폴링(Polling)**이라고 한다)
+만약 **인터럽트 기능이 없었다면**, CPU는 Interrupt가 발생했는지 알기 위해 주기적으로 확인을 해야 한다. (이를 폴링(Polling)이라고 한다)
 
-폴링을 하는 시간에는 원래 하던 일에 집중할 수가 없게 되어 많은 기능을 제대로 수행하지 못하는 단점이 있었다.
+-> CPU 시간이 낭비된다.
 
 <br>
 
