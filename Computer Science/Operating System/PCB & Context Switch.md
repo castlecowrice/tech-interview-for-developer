@@ -14,7 +14,7 @@
   - Process ID
   - Process State
   - Process Priority
-  - CPU Registers
+  - <del>CPU Registers</del>
   - Owner
   - CPU Usage
   - Memeory Usage
@@ -23,11 +23,15 @@
 
 <br>
 
-#### PCB(Process Control Block)
+#### PCB (Process Control Block)
 
 > 프로세스 메타데이터들을 저장해 놓는 곳, 한 PCB 안에는 한 프로세스의 정보가 담김
 
 <img src="https://t1.daumcdn.net/cfile/tistory/25673A5058F211C224" width="400">
+
+#### TCB (Thread Control Block)
+
+> thread의 processor state, 즉 register 상태를 저장하고 있다.
 
 ##### 다시 정리해보면?
 
@@ -60,7 +64,7 @@
 
 #### Context Switch
 
-> CPU가 현재 실행중인 프로세스 상태를 PCB에 저장하고, 다른 프로세스의 상태를 PCB에서 읽어 레지스터에 저장하는 과정
+> CPU가 현재 실행중인 thread 상태를 TCB에 저장하고, 다른 thread의 상태를 TCB에서 읽어 레지스터에 저장하는 과정
 
 보통 인터럽트가 발생하거나, 실행 중인 CPU 사용 허가시간을 모두 소모하거나, 입출력을 위해 대기해야 하는 경우에 Context Switching이 발생
 
